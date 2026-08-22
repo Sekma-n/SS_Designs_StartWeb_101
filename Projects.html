@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSDesigns — Projects</title>
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- reset & base ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #faf8f6;
+      color: #1e1e1e;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- header / navigation ----- */
+    .site-header {
+      padding: 28px 0 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #111;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo i {
+      color: #c9a87c;
+      font-size: 30px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: #c9a87c;
+    }
+
+    .nav a.active {
+      color: #c9a87c;
+      position: relative;
+    }
+
+    .nav a.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: #c9a87c;
+      border-radius: 4px;
+    }
+
+    /* ----- hero / page header ----- */
+    .page-hero {
+      padding: 64px 0 48px;
+      text-align: center;
+      background: linear-gradient(135deg, #faf8f6 0%, #f0ebe6 100%);
+    }
+
+    .page-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .page-hero h1 span {
+      color: #c9a87c;
+    }
+
+    .page-hero p {
+      font-size: 20px;
+      color: #5e5e5e;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ----- filter buttons ----- */
+    .filter-section {
+      padding: 32px 0 16px;
+      text-align: center;
+    }
+
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .filter-btn {
+      padding: 10px 28px;
+      border-radius: 40px;
+      border: 2px solid transparent;
+      background: #ffffff;
+      color: #555;
+      font-weight: 500;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .filter-btn:hover {
+      border-color: #c9a87c;
+      color: #111;
+    }
+
+    .filter-btn.active {
+      background: #c9a87c;
+      color: #fff;
+      border-color: #c9a87c;
+    }
+
+    /* ----- projects grid ----- */
+    section {
+      padding: 40px 0 80px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .project-item {
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .project-item img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-info {
+      padding: 24px 24px 28px;
+    }
+
+    .project-info .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #c9a87c;
+      background: #f5f0eb;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .project-info h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 6px;
+    }
+
+    .project-info p {
+      font-size: 15px;
+      color: #666;
+      max-width: 100%;
+      margin-bottom: 14px;
+    }
+
+    .project-info .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #c9a87c;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+
+    .project-info .project-link:hover {
+      gap: 14px;
+    }
+
+    /* ----- featured project ----- */
+    .featured-project {
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      margin-bottom: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .featured-project:hover {
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .featured-project img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 320px;
+    }
+
+    .featured-content {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-content .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #c9a87c;
+      background: #f5f0eb;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+
+    .featured-content h2 {
+      font-size: 32px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .featured-content p {
+      font-size: 17px;
+      color: #555;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .featured-content .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #c9a87c;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+
+    .featured-content .project-link:hover {
+      gap: 14px;
+    }
+
+    /* ----- CTA section ----- */
+    .cta-section {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 80px 0;
+      border-radius: 24px;
+      margin: 0 24px;
+    }
+
+    .cta-section .container {
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 18px;
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #c9a87c;
+      color: #1e1e1e;
+      padding: 14px 40px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #dbbd96;
+      transform: scale(1.01);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      padding: 12px 32px;
+      margin-left: 12px;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ----- footer ----- */
+    .site-footer {
+      padding: 40px 0 32px;
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+      margin-top: 16px;
+      text-align: center;
+      color: #777;
+      font-size: 15px;
+    }
+
+    .site-footer span {
+      color: #c9a87c;
+    }
+
+    /* ----- WhatsApp floating button ----- */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 60px;
+      width: 64px;
+      height: 64px;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      font-size: 36px;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.45);
+      color: #fff;
+    }
+
+    .whatsapp-float i {
+      line-height: 1;
+    }
+
+    .whatsapp-float .tooltip {
+      display: none;
+      position: absolute;
+      right: 76px;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .whatsapp-float:hover .tooltip {
+      display: block;
+    }
+
+    /* ----- responsive ----- */
+    @media (max-width: 992px) {
+      .projects-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .featured-project {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-project img {
+        min-height: 240px;
+        max-height: 320px;
+      }
+
+      .featured-content {
+        padding: 32px 28px;
+      }
+
+      .cta-section {
+        margin: 0 16px;
+        padding: 60px 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 16px 24px;
+      }
+
+      .page-hero h1 {
+        font-size: 32px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-content h2 {
+        font-size: 24px;
+      }
+
+      .filter-buttons {
+        gap: 8px;
+      }
+
+      .filter-btn {
+        padding: 8px 18px;
+        font-size: 12px;
+      }
+
+      .cta-section {
+        padding: 40px 16px;
+        margin: 0 8px;
+      }
+
+      .cta-section .btn-outline-light {
+        margin-left: 0;
+        margin-top: 12px;
+      }
+
+      .whatsapp-float {
+        width: 56px;
+        height: 56px;
+        font-size: 30px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <i class="fas fa-pen-fancy"></i> SSDesigns
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About us</a>
+        <a href="services.html">Services</a>
+        <a href="#" class="active">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Our <span>Projects</span></h1>
+      <p>
+        A selection of our recent work showcasing how we've helped brands
+        grow through strategic creative design.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FILTER SECTION ===== -->
+  <div class="filter-section">
+    <div class="container">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="packaging">Packaging</button>
+        <button class="filter-btn" data-filter="digital">Digital</button>
+        <button class="filter-btn" data-filter="print">Print</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PROJECTS ===== -->
+  <section>
+    <div class="container">
+      <!-- Featured Project -->
+      <div class="featured-project">
+        <img src="alpha brand .jpg" alt="Featured Project" />
+        <div class="featured-content">
+          <span class="tag">Featured Project</span>
+          <h2>Alpha Brand — Complete Rebrand</h2>
+          <p>
+            A comprehensive brand transformation including strategy, visual identity,
+            packaging design, and digital presence. The rebrand resulted in a 45%
+            increase in brand recognition and significant market growth.
+          </p>
+          <a href="#" class="project-link">
+            View case study <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid">
+        <div class="project-item" data-category="branding">
+          <img src="Green & Nature.jpg" alt="Project 1" />
+          <div class="project-info">
+            <span class="tag">Branding</span>
+            <h3>Green &amp; Nature</h3>
+            <p>Complete visual identity and brand strategy for an eco-friendly lifestyle brand.</p>
+            <a href="#" class="project-link">
+              View project <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-item" data-category="packaging">
+          <img src="Vintage Wine.jpg" alt="Project 2" />
+          <div class="project-info">
+            <span class="tag">Packaging</span>
+            <h3>Vintage Wine Collection</h3>
+            <p>Structural packaging design and premium labels for a luxury wine brand.</p>
+            <a href="#" class="project-link">
+              View project <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-item" data-category="digital">
+          <img src="https://cdn.dribbble.com/users/1130546/screenshots/16940820/media/2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d.jpg?resize=800x600&vertical=center" alt="Project 3" />
+          <div class="project-info">
+            <span class="tag">Digital</span>
+            <h3>InnoLab Website</h3>
+            <p>Responsive website design and user experience for a tech innovation lab.</p>
+            <a href="#" class="project-link">
+              View project <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-item" data-category="branding">
+          <img src="https://cdn.dribbble.com/users/1577049/screenshots/17529388/media/1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d.jpg?resize=800x600&vertical=center" alt="Project 4" />
+          <div class="project-info">
+            <span class="tag">Branding</span>
+            <h3>Café Origin</h3>
+            <p>Brand identity and visual system for a specialty coffee roastery.</p>
+            <a href="#" class="project-link">
+              View project <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-item" data-category="packaging">
+          <img src="https://cdn.dribbble.com/users/303689/screenshots/16384370/media/9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d.jpg?resize=800x600&vertical=center" alt="Project 5" />
+          <div class="project-info">
+            <span class="tag">Packaging</span>
+            <h3>PharmaTech Line</h3>
+            <p>Packaging design for pharmaceutical products with clear, trustworthy branding.</p>
+            <a href="#" class="project-link">
+              View project <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-item" data-category="print">
+          <img src="https://cdn.dribbble.com/users/1868073/screenshots/16848220/media/4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a.jpg?resize=800x600&vertical=center" alt="Project 6" />
+          <div class="project-info">
+            <span class="tag">Print</span>
+            <h3>Design &amp; Co Catalog</h3>
+            <p>Premium print catalog and brochure design for a design furniture brand.</p>
+            <a href="#" class="project-link">
+              View project <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-item" data-category="digital">
+          <img src="https://cdn.dribbble.com/users/1082851/screenshots/16539020/media/7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d.jpg?resize=800x600&vertical=center" alt="Project 7" />
+          <div class="project-info">
+            <span class="tag">Digital</span>
+            <h3>Market Fresh App</h3>
+            <p>Mobile app design and user interface for an online grocery delivery service.</p>
+            <a href="#" class="project-link">
+              View project <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-item" data-category="branding">
+          <img src="https://cdn.dribbble.com/users/927577/screenshots/18063736/media/2b7d32e7d3b7c9b1f4e8a5c3d0f2e9a0.jpg?resize=800x600&vertical=center" alt="Project 8" />
+          <div class="project-info">
+            <span class="tag">Branding</span>
+            <h3>Urban Escape</h3>
+            <p>Brand identity and marketing materials for a travel and lifestyle company.</p>
+            <a href="#" class="project-link">
+              View project <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-item" data-category="print">
+          <img src="https://cdn.dribbble.com/users/428059/screenshots/17252076/media/8f7d8e1c3a6b4d5e9f0a1b2c3d4e5f6g.jpg?resize=800x600&vertical=center" alt="Project 9" />
+          <div class="project-info">
+            <span class="tag">Print</span>
+            <h3>Boutique Hotel Brochure</h3>
+            <p>Elegant print brochure and collateral for a luxury boutique hotel.</p>
+            <a href="#" class="project-link">
+              View project <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section style="border-bottom: none; padding: 40px 0 80px;">
+    <div class="cta-section">
+      <div class="container">
+        <h2>Have a project in mind?</h2>
+        <p>
+          Let's create something exceptional together. We'd love to hear about
+          your brand and how we can help bring it to life.
+        </p>
+        <div>
+          <a href="contact.html" class="btn">Start your project</a>
+          <a href="services.html" class="btn btn-outline-light">Explore services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p style="font-size: 15px; color: #888;">
+        &copy; 2026 <span>SSDesigns</span> — Creative solutions for small and large brands.
+      </p>
+      <p style="font-size: 13px; color: #aaa; margin-top: 4px;">
+        <i class="fas fa-pen-fancy" style="color: #c9a87c; margin-right: 4px;"></i>
+        Design is in everything we do.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+  <a href="https://wa.me/27614548884?text=Hi%20SSDesigns%2C%20I'm%20interested%20in%20your%20projects." 
+     class="whatsapp-float" 
+     target="_blank" 
+     rel="noopener noreferrer"
+     aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="tooltip">Chat with us</span>
+  </a>
+
+  <!-- ===== FILTER SCRIPT ===== -->
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+
+        const filterValue = this.getAttribute('data-filter');
+
+        projectItems.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
