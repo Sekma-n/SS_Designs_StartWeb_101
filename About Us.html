@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSDesigns — About Us</title>
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- reset & base ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #faf8f6;
+      color: #1e1e1e;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- header / navigation ----- */
+    .site-header {
+      padding: 28px 0 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #111;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo i {
+      color: #c9a87c;
+      font-size: 30px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: #c9a87c;
+    }
+
+    .nav a.active {
+      color: #c9a87c;
+      position: relative;
+    }
+
+    .nav a.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: #c9a87c;
+      border-radius: 4px;
+    }
+
+    /* ----- hero / quote ----- */
+    .hero-quote {
+      padding: 64px 0 48px;
+      text-align: center;
+    }
+
+    .hero-quote blockquote {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 28px;
+      font-weight: 350;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      color: #1a1a1a;
+    }
+
+    .hero-quote blockquote::before {
+      content: '\201C';
+      font-size: 48px;
+      color: #c9a87c;
+      vertical-align: middle;
+      margin-right: 6px;
+      font-weight: 300;
+    }
+
+    .hero-quote blockquote::after {
+      content: '\201D';
+      font-size: 48px;
+      color: #c9a87c;
+      vertical-align: middle;
+      margin-left: 6px;
+      font-weight: 300;
+    }
+
+    .hero-quote .attribution {
+      margin-top: 12px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #777;
+      letter-spacing: 0.02em;
+    }
+
+    /* ----- section styling ----- */
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #b09b84;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #111;
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+    }
+
+    p {
+      font-size: 18px;
+      color: #2d2d2d;
+      max-width: 720px;
+    }
+
+    .text-muted {
+      color: #5e5e5e;
+      font-size: 17px;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 64px;
+      margin-top: 24px;
+    }
+
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      margin-top: 28px;
+    }
+
+    /* ----- about / who we are ----- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 64px;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 16px;
+    }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .studio-badge {
+      background: #f0ebe6;
+      padding: 32px 28px;
+      border-radius: 16px;
+    }
+
+    .studio-badge .highlight {
+      font-size: 20px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .studio-badge .highlight i {
+      color: #c9a87c;
+      margin-right: 8px;
+    }
+
+    .studio-badge p {
+      font-size: 17px;
+      color: #3d3d3d;
+    }
+
+    /* ----- values & objectives (cards) ----- */
+    .value-card,
+    .objective-card {
+      background: #ffffff;
+      padding: 28px 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid rgba(0, 0, 0, 0.02);
+    }
+
+    .value-card:hover,
+    .objective-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .value-card .icon,
+    .objective-card .icon {
+      font-size: 28px;
+      color: #c9a87c;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .value-card h4,
+    .objective-card h4 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .value-card p,
+    .objective-card p {
+      font-size: 16px;
+      color: #444;
+      max-width: 100%;
+    }
+
+    /* ----- clients (logos placeholder) with savee images ----- */
+    .client-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 20px;
+    }
+
+    .client-item {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px 12px;
+      text-align: center;
+      border: 1px solid #f0ebe6;
+      font-weight: 500;
+      color: #2d2d2d;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .client-item img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #f0ebe6;
+      transition: border-color 0.2s;
+    }
+
+    .client-item:hover {
+      border-color: #c9a87c;
+      background: #fcf9f7;
+    }
+
+    .client-item:hover img {
+      border-color: #c9a87c;
+    }
+
+    .client-item i {
+      font-size: 28px;
+      color: #c9a87c;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ----- testimonials ----- */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 16px;
+    }
+
+    .testimonial {
+      background: #ffffff;
+      padding: 32px 28px;
+      border-radius: 20px;
+      border: 1px solid #f0ebe6;
+      transition: box-shadow 0.2s;
+    }
+
+    .testimonial:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+    }
+
+    .testimonial .stars {
+      color: #c9a87c;
+      letter-spacing: 4px;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .testimonial blockquote {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #1e1e1e;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .testimonial .author {
+      font-weight: 600;
+      font-size: 15px;
+      color: #111;
+    }
+
+    .testimonial .role {
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* ----- contact / CTA ----- */
+    .contact-box {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 56px 48px;
+      border-radius: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .contact-box h2 {
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .contact-box p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 18px;
+      max-width: 460px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #c9a87c;
+      color: #1e1e1e;
+      padding: 14px 40px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #dbbd96;
+      transform: scale(1.01);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      padding: 12px 32px;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .contact-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-links a:hover {
+      color: #fff;
+    }
+
+    /* ----- footer ----- */
+    .site-footer {
+      padding: 40px 0 32px;
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+      margin-top: 16px;
+      text-align: center;
+      color: #777;
+      font-size: 15px;
+    }
+
+    .site-footer span {
+      color: #c9a87c;
+    }
+
+    /* ----- WhatsApp floating button ----- */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 60px;
+      width: 64px;
+      height: 64px;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      font-size: 36px;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.45);
+      color: #fff;
+    }
+
+    .whatsapp-float i {
+      line-height: 1;
+    }
+
+    /* small label (optional) */
+    .whatsapp-float .tooltip {
+      display: none;
+      position: absolute;
+      right: 76px;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .whatsapp-float:hover .tooltip {
+      display: block;
+    }
+
+    /* ----- responsive ----- */
+    @media (max-width: 992px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .grid-2col {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .grid-3col {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .client-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 16px 24px;
+      }
+
+      .hero-quote blockquote {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 28px;
+      }
+
+      .grid-3col {
+        grid-template-columns: 1fr;
+      }
+
+      .client-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .contact-box {
+        padding: 36px 24px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact-box p {
+        max-width: 100%;
+      }
+
+      .contact-links {
+        justify-content: center;
+      }
+
+      .whatsapp-float {
+        width: 56px;
+        height: 56px;
+        font-size: 30px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <i class="fas fa-pen-fancy"></i> SSDesigns
+      </a>
+      <nav class="nav">
+        <a href="#">Home</a>
+        <a href="#" class="active">About us</a>
+        <a href="#">Services</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO / QUOTE ===== -->
+  <section class="hero-quote">
+    <div class="container">
+      <blockquote>
+        Design is in everything we do, but it is also something between these things.
+        It is a mixture of craft, science, storytelling, propaganda, and philosophy.
+      </blockquote>
+      <div class="attribution">— Erik Adigard</div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT / WHO WE ARE ===== -->
+  <section>
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-label">About Us</span>
+          <h2>Who we are?</h2>
+          <p>
+            We develop creative solutions for small and large brands alike,
+            building authentic product identities and more.
+          </p>
+          <p>
+            We love growing brands and welcoming those who like to challenge
+            solid markets through innovation, who aren't always satisfied with
+            the status quo, and who push us to achieve ever better results.
+          </p>
+          <p>
+            Putting the consumer first, we strive to develop creative solutions
+            that perform in the marketplace.
+          </p>
+        </div>
+        <div class="studio-badge">
+          <div class="highlight">
+            <i class="fas fa-users"></i> A creative studio
+          </div>
+          <p>
+            Founded by two experienced professionals in marketing and graphic arts,
+            brought together by a shared passion for brand design.
+          </p>
+          <div style="margin-top: 20px; display: flex; gap: 16px; flex-wrap: wrap;">
+            <span style="background: #e6dfd8; padding: 6px 16px; border-radius: 40px; font-size: 14px; font-weight: 500;">strategy</span>
+            <span style="background: #e6dfd8; padding: 6px 16px; border-radius: 40px; font-size: 14px; font-weight: 500;">branding</span>
+            <span style="background: #e6dfd8; padding: 6px 16px; border-radius: 40px; font-size: 14px; font-weight: 500;">design</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OBJECTIVES & VALUES ===== -->
+  <section>
+    <div class="container">
+      <span class="section-label">What we aim for</span>
+      <h2>Our objectives</h2>
+      <div class="grid-2col">
+        <div class="objective-card">
+          <div class="icon"><i class="fas fa-bullseye"></i></div>
+          <h4>Strategy &amp; creativity</h4>
+          <p>
+            To use our knowledge and experience to help brand owners achieve
+            their goals through strategic thinking and creative design.
+          </p>
+        </div>
+        <div class="objective-card">
+          <div class="icon"><i class="fas fa-handshake"></i></div>
+          <h4>Real partnerships</h4>
+          <p>
+            We build genuine relationships with our clients, placing transparency
+            and trust at the heart of every collaboration.
+          </p>
+        </div>
+      </div>
+
+      <span class="section-label" style="margin-top: 48px; display: inline-block;">Our guide</span>
+      <h2>Our values</h2>
+      <div class="grid-3col">
+        <div class="value-card">
+          <div class="icon"><i class="fas fa-gem"></i></div>
+          <h4>Real value</h4>
+          <p>
+            To deliver real value to our clients' brands in everything we provide.
+          </p>
+        </div>
+        <div class="value-card">
+          <div class="icon"><i class="fas fa-heart"></i></div>
+          <h4>Sincerity</h4>
+          <p>
+            To be honest with our clients for the benefit of their brands and consumers.
+          </p>
+        </div>
+        <div class="value-card">
+          <div class="icon"><i class="fas fa-rocket"></i></div>
+          <h4>Impact</h4>
+          <p>
+            Every creative solution must have a measurable impact in the market
+            and in consumers' lives.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLIENTS with images from savee ===== -->
+  <section>
+    <div class="container">
+      <span class="section-label">Collaborations</span>
+      <h2>Our clients</h2>
+      <p class="text-muted" style="margin-bottom: 8px;">
+        Some of the friends we've made while working together.
+      </p>
+      <div class="client-grid">
+        <!-- using savee.it placeholder images (brand/creative style) -->
+        <div class="client-item">
+          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-1.jpg" alt="Alpha Brand" />
+          <span>Alpha Brand</span>
+        </div>
+        <div class="client-item">
+          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-2.jpg" alt="Green & Nature" />
+          <span>Green &amp; Nature</span>
+        </div>
+        <div class="client-item">
+          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-3.jpg" alt="InnoLab" />
+          <span>InnoLab</span>
+        </div>
+        <div class="client-item">
+          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-4.jpg" alt="Café Origin" />
+          <span>Café Origin</span>
+        </div>
+        <div class="client-item">
+          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-5.jpg" alt="Vintage Wine" />
+          <span>Vintage Wine</span>
+        </div>
+        <div class="client-item">
+          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-6.jpg" alt="PharmaTech" />
+          <span>PharmaTech</span>
+        </div>
+        <div class="client-item">
+          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-7.jpg" alt="Design & Co" />
+          <span>Design &amp; Co</span>
+        </div>
+        <div class="client-item">
+          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-8.jpg" alt="Market Fresh" />
+          <span>Market Fresh</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section>
+    <div class="container">
+      <span class="section-label">Success stories</span>
+      <h2>Testimonials</h2>
+      <div class="testimonial-grid">
+
+        <div class="testimonial">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>
+            “Our experience with SSDesigns was a great success. We needed a total
+            packaging redesign and asked for a proposal. We were delighted with
+            the new look for our various ranges and implemented everything within
+            3 months. Our products are now on pharmacy shelves, and the positive
+            sales evolution says it all.”
+          </blockquote>
+          <div class="author">– Brand Manager PharmaTech</div>
+        </div>
+
+        <div class="testimonial">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>
+            “They developed a revolutionary structural design, a new shape for
+            Vintage Wine, which led to increased shelf visibility and a modernised
+            image, while staying true to the brand's essence. The bold way they
+            approached a traditional brand impressed us.”
+          </blockquote>
+          <div class="author">– Brand Director Vintage Wine</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / CTA ===== -->
+  <section style="border-bottom: none; padding-bottom: 32px;">
+    <div class="container">
+      <div class="contact-box">
+        <div>
+          <span class="section-label" style="color: rgba(255,255,255,0.5);">Let's talk?</span>
+          <h2>Contact us</h2>
+          <p>
+            Want to build an authentic brand together? We're here to turn
+            ideas into reality.
+          </p>
+          <div class="contact-links">
+            <a href="#"><i class="fas fa-envelope"></i> sekang.segotso@moov.life</a>
+            <a href="#"><i class="fas fa-phone"></i> +27 61 454 8884</a>
+            <a href="#"><i class="fas fa-map-pin"></i> 25060 Diepkloof Z4 Bopang street</a>
+          </div>
+        </div>
+        <div>
+          <a href="#" class="btn">Send a message</a>
+          <a href="#" class="btn btn-outline-light" style="margin-left: 12px;">See projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p style="font-size: 15px; color: #888;">
+        &copy; 2026 <span>SSDesigns</span> — Creative solutions for small and large brands.
+      </p>
+      <p style="font-size: 13px; color: #aaa; margin-top: 4px;">
+        <i class="fas fa-pen-fancy" style="color: #c9a87c; margin-right: 4px;"></i>
+        Design is in everything we do.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+  <a href="https://wa.me/27614548884?text=Hi%20SSDesigns%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services." 
+     class="whatsapp-float" 
+     target="_blank" 
+     rel="noopener noreferrer"
+     aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="tooltip">Chat with us</span>
+  </a>
+
+</body>
+</html>

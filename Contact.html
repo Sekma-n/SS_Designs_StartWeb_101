@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SSDesigns — Contact</title>
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ----- reset & base ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #faf8f6;
+      color: #1e1e1e;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- header / navigation ----- */
+    .site-header {
+      padding: 28px 0 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #111;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo i {
+      color: #c9a87c;
+      font-size: 30px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: #c9a87c;
+    }
+
+    .nav a.active {
+      color: #c9a87c;
+      position: relative;
+    }
+
+    .nav a.active::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: #c9a87c;
+      border-radius: 4px;
+    }
+
+    /* ----- hero / page header ----- */
+    .page-hero {
+      padding: 64px 0 48px;
+      text-align: center;
+      background: linear-gradient(135deg, #faf8f6 0%, #f0ebe6 100%);
+    }
+
+    .page-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .page-hero h1 span {
+      color: #c9a87c;
+    }
+
+    .page-hero p {
+      font-size: 20px;
+      color: #5e5e5e;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ----- contact section ----- */
+    section {
+      padding: 60px 0 80px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ----- contact info ----- */
+    .contact-info h2 {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .contact-info > p {
+      font-size: 17px;
+      color: #555;
+      margin-bottom: 32px;
+      max-width: 100%;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .info-item .icon {
+      width: 48px;
+      height: 48px;
+      background: #f0ebe6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c9a87c;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .info-item .content h4 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 2px;
+    }
+
+    .info-item .content p {
+      font-size: 15px;
+      color: #666;
+      max-width: 100%;
+    }
+
+    .info-item .content a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .info-item .content a:hover {
+      color: #c9a87c;
+    }
+
+    /* ----- social links ----- */
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .social-links a {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #f0ebe6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      background: #c9a87c;
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    /* ----- contact form ----- */
+    .contact-form {
+      background: #ffffff;
+      padding: 40px 36px;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    }
+
+    .contact-form h3 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 8px;
+    }
+
+    .contact-form .form-subtitle {
+      font-size: 15px;
+      color: #777;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #e0dcd8;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      color: #333;
+      background: #faf8f6;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: #c9a87c;
+      box-shadow: 0 0 0 3px rgba(201, 168, 124, 0.1);
+      background: #fff;
+    }
+
+    .form-group textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      cursor: pointer;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #c9a87c;
+      color: #1e1e1e;
+      padding: 14px 40px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: #dbbd96;
+      transform: scale(1.01);
+    }
+
+    /* ----- map section ----- */
+    .map-section {
+      padding: 0 0 60px;
+    }
+
+    .map-container {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 320px;
+      border: 0;
+      display: block;
+    }
+
+    /* ----- CTA section ----- */
+    .cta-section {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 60px 0;
+      border-radius: 24px;
+      margin: 0 24px 40px;
+    }
+
+    .cta-section .container {
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 18px;
+      max-width: 560px;
+      margin: 0 auto 32px;
+    }
+
+    .cta-section .btn {
+      background: #c9a87c;
+      color: #1e1e1e;
+      width: auto;
+      padding: 14px 40px;
+    }
+
+    .cta-section .btn:hover {
+      background: #dbbd96;
+    }
+
+    .cta-section .btn-outline-light {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+      padding: 12px 32px;
+      margin-left: 12px;
+      width: auto;
+    }
+
+    .cta-section .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ----- footer ----- */
+    .site-footer {
+      padding: 40px 0 32px;
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+      margin-top: 16px;
+      text-align: center;
+      color: #777;
+      font-size: 15px;
+    }
+
+    .site-footer span {
+      color: #c9a87c;
+    }
+
+    /* ----- WhatsApp floating button ----- */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #25d366;
+      color: #fff;
+      border-radius: 60px;
+      width: 64px;
+      height: 64px;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      font-size: 36px;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 32px rgba(37, 211, 102, 0.45);
+      color: #fff;
+    }
+
+    .whatsapp-float i {
+      line-height: 1;
+    }
+
+    .whatsapp-float .tooltip {
+      display: none;
+      position: absolute;
+      right: 76px;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .whatsapp-float:hover .tooltip {
+      display: block;
+    }
+
+    /* ----- responsive ----- */
+    @media (max-width: 992px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .cta-section {
+        margin: 0 16px 40px;
+        padding: 50px 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 16px 24px;
+      }
+
+      .page-hero h1 {
+        font-size: 32px;
+      }
+
+      .contact-form {
+        padding: 28px 20px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-info h2 {
+        font-size: 26px;
+      }
+
+      .cta-section {
+        padding: 36px 16px;
+        margin: 0 8px 32px;
+      }
+
+      .cta-section .btn-outline-light {
+        margin-left: 0;
+        margin-top: 12px;
+      }
+
+      .whatsapp-float {
+        width: 56px;
+        height: 56px;
+        font-size: 30px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <i class="fas fa-pen-fancy"></i> SSDesigns
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About us</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="#" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Get in <span>Touch</span></h1>
+      <p>
+        Have a project in mind? We'd love to hear from you. Let's create
+        something exceptional together.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2>Let's talk</h2>
+          <p>
+            Whether you need a complete brand overhaul, a fresh website, or
+            strategic guidance, we're here to help. Reach out and let's start
+            a conversation.
+          </p>
+
+          <div class="info-item">
+            <div class="icon"><i class="fas fa-envelope"></i></div>
+            <div class="content">
+              <h4>Email</h4>
+              <p><a href="mailto:sekang.segotso@moov.life">sekang.segotso@moov.life</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon"><i class="fas fa-phone"></i></div>
+            <div class="content">
+              <h4>Phone</h4>
+              <p><a href="tel:+27614548884">+27 61 454 8884</a></p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="content">
+              <h4>Address</h4>
+              <p>25060 Diepkloof Z4 Bopang street<br />Johannesburg, South Africa</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon"><i class="fas fa-clock"></i></div>
+            <div class="content">
+              <h4>Working Hours</h4>
+              <p>Monday – Friday: 8:00 AM – 6:00 PM<br />Saturday: 9:00 AM – 2:00 PM</p>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+            <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h3>Send a message</h3>
+          <p class="form-subtitle">We'll get back to you within 24 hours.</p>
+
+          <form id="contactForm" onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="+27 61 454 8884" />
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Interested In</label>
+              <select id="service">
+                <option value="">Select a service...</option>
+                <option value="branding">Brand Identity</option>
+                <option value="digital">Digital Design</option>
+                <option value="packaging">Packaging Design</option>
+                <option value="strategy">Brand Strategy</option>
+                <option value="print">Print Design</option>
+                <option value="marketing">Marketing Collateral</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Tell us about your project..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn">
+              <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAP SECTION ===== -->
+  <div class="map-section">
+    <div class="container">
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.948233982929!2d27.892977!3d-26.204103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950a5e5e5e5e5e%3A0x5e5e5e5e5e5e5e5e!2sDiepkloof%2C%20Johannesburg%2C%20South%20Africa!5e0!3m2!1sen!2sza!4v1700000000000" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CTA SECTION ===== -->
+  <div class="cta-section">
+    <div class="container">
+      <h2>Ready to start your project?</h2>
+      <p>
+        Let's create something amazing together. We're here to turn your
+        ideas into authentic brand experiences.
+      </p>
+      <div>
+        <a href="projects.html" class="btn">View our work</a>
+        <a href="#" class="btn btn-outline-light" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'}); return false;">Send a message</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p style="font-size: 15px; color: #888;">
+        &copy; 2026 <span>SSDesigns</span> — Creative solutions for small and large brands.
+      </p>
+      <p style="font-size: 13px; color: #aaa; margin-top: 4px;">
+        <i class="fas fa-pen-fancy" style="color: #c9a87c; margin-right: 4px;"></i>
+        Design is in everything we do.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+  <a href="https://wa.me/27614548884?text=Hi%20SSDesigns%2C%20I'd%20like%20to%20get%20in%20touch%20about%20a%20project." 
+     class="whatsapp-float" 
+     target="_blank" 
+     rel="noopener noreferrer"
+     aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="tooltip">Chat with us</span>
+  </a>
+
+  <!-- ===== FORM SUBMIT HANDLER ===== -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (name && email && message) {
+        alert('Thank you, ' + name + '! Your message has been sent. We\'ll get back to you within 24 hours.');
+        this.reset();
+      } else {
+        alert('Please fill in all required fields (Name, Email, and Message).');
+      }
+    });
+  </script>
+
+</body>
+</html>
