@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SSDesigns — About Us</title>
+  <title>SSDesigns — Premium About Us</title>
   <!-- Font Awesome (icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
-    /* ----- reset & base ----- */
     * {
       margin: 0;
       padding: 0;
@@ -27,10 +26,28 @@
       padding: 0 24px;
     }
 
-    /* ----- header / navigation ----- */
+    /* ---------- PREMIUM STICKY HEADER ---------- */
     .site-header {
-      padding: 28px 0 20px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      background: rgba(250, 248, 246, 0.78);
+      border-bottom: 1px solid rgba(201, 168, 124, 0.15);
+      box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.25s, background 0.25s;
+    }
+
+    .site-header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 8%;
+      width: 84%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a87c, transparent);
+      opacity: 0.45;
     }
 
     .header-inner {
@@ -39,22 +56,28 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 16px;
+      padding: 16px 0 13px;
     }
 
     .logo {
-      font-size: 28px;
+      font-size: 27px;
       font-weight: 700;
       letter-spacing: -0.02em;
-      color: #111;
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 8px;
+      background: linear-gradient(135deg, #1e1e1e 0%, #3a2e20 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .logo i {
+      -webkit-text-fill-color: #c9a87c;
       color: #c9a87c;
       font-size: 30px;
+      filter: drop-shadow(0 2px 5px rgba(201, 168, 124, 0.25));
     }
 
     .nav {
@@ -66,8 +89,32 @@
 
     .nav a {
       text-decoration: none;
-      color: #333;
-      transition: color 0.2s;
+      color: #2b2b2b;
+      transition: color 0.2s ease;
+      position: relative;
+      padding: 6px 2px;
+      letter-spacing: 0.01em;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #c9a87c, #e6d2b8);
+      border-radius: 30px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
+      opacity: 0;
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after {
+      transform: scaleX(1);
+      opacity: 1;
     }
 
     .nav a:hover {
@@ -76,65 +123,37 @@
 
     .nav a.active {
       color: #c9a87c;
-      position: relative;
     }
 
-    .nav a.active::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 100%;
-      height: 2px;
-      background: #c9a87c;
-      border-radius: 4px;
-    }
-
-    /* ----- hero / quote ----- */
-    .hero-quote {
+    /* ---------- page hero ---------- */
+    .page-hero {
       padding: 64px 0 48px;
       text-align: center;
+      background: linear-gradient(135deg, #faf8f6 0%, #f0ebe6 100%);
     }
 
-    .hero-quote blockquote {
-      max-width: 800px;
+    .page-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #111;
+      margin-bottom: 12px;
+    }
+
+    .page-hero h1 span {
+      color: #c9a87c;
+    }
+
+    .page-hero p {
+      font-size: 20px;
+      color: #5e5e5e;
+      max-width: 640px;
       margin: 0 auto;
-      font-size: 28px;
-      font-weight: 350;
-      line-height: 1.4;
-      letter-spacing: -0.01em;
-      color: #1a1a1a;
     }
 
-    .hero-quote blockquote::before {
-      content: '\201C';
-      font-size: 48px;
-      color: #c9a87c;
-      vertical-align: middle;
-      margin-right: 6px;
-      font-weight: 300;
-    }
-
-    .hero-quote blockquote::after {
-      content: '\201D';
-      font-size: 48px;
-      color: #c9a87c;
-      vertical-align: middle;
-      margin-left: 6px;
-      font-weight: 300;
-    }
-
-    .hero-quote .attribution {
-      margin-top: 12px;
-      font-size: 16px;
-      font-weight: 400;
-      color: #777;
-      letter-spacing: 0.02em;
-    }
-
-    /* ----- section styling ----- */
+    /* ---------- about section ---------- */
     section {
-      padding: 56px 0;
+      padding: 70px 0;
       border-bottom: 1px solid rgba(0, 0, 0, 0.04);
     }
 
@@ -157,240 +176,230 @@
       font-weight: 600;
       letter-spacing: -0.02em;
       line-height: 1.2;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       color: #111;
     }
 
-    h3 {
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-bottom: 12px;
-      color: #1a1a1a;
-    }
-
-    p {
+    .section-subtitle {
       font-size: 18px;
-      color: #2d2d2d;
-      max-width: 720px;
-    }
-
-    .text-muted {
       color: #5e5e5e;
-      font-size: 17px;
+      max-width: 640px;
+      margin-bottom: 40px;
     }
 
-    .grid-2col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px 64px;
-      margin-top: 24px;
-    }
-
-    .grid-3col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      margin-top: 28px;
-    }
-
-    /* ----- about / who we are ----- */
+    /* about grid */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px 64px;
+      gap: 60px;
       align-items: start;
     }
 
     .about-text p {
+      font-size: 17px;
+      color: #444;
       margin-bottom: 16px;
+      max-width: 100%;
     }
 
     .about-text p:last-child {
       margin-bottom: 0;
     }
 
-    .studio-badge {
-      background: #f0ebe6;
-      padding: 32px 28px;
+    .about-image {
       border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
     }
 
-    .studio-badge .highlight {
-      font-size: 20px;
-      font-weight: 500;
-      color: #1a1a1a;
-      margin-bottom: 8px;
-    }
-
-    .studio-badge .highlight i {
-      color: #c9a87c;
-      margin-right: 8px;
-    }
-
-    .studio-badge p {
-      font-size: 17px;
-      color: #3d3d3d;
-    }
-
-    /* ----- values & objectives (cards) ----- */
-    .value-card,
-    .objective-card {
-      background: #ffffff;
-      padding: 28px 24px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.04);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      border: 1px solid rgba(0, 0, 0, 0.02);
-    }
-
-    .value-card:hover,
-    .objective-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
-    }
-
-    .value-card .icon,
-    .objective-card .icon {
-      font-size: 28px;
-      color: #c9a87c;
-      margin-bottom: 12px;
-      display: inline-block;
-    }
-
-    .value-card h4,
-    .objective-card h4 {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #111;
-    }
-
-    .value-card p,
-    .objective-card p {
-      font-size: 16px;
-      color: #444;
-      max-width: 100%;
-    }
-
-    /* ----- clients (logos placeholder) with savee images ----- */
-    .client-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      margin-top: 20px;
-    }
-
-    .client-item {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 20px 12px;
-      text-align: center;
-      border: 1px solid #f0ebe6;
-      font-weight: 500;
-      color: #2d2d2d;
-      font-size: 15px;
-      letter-spacing: 0.02em;
-      transition: border-color 0.2s, background 0.2s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .client-item img {
-      width: 72px;
-      height: 72px;
+    .about-image img {
+      width: 100%;
+      height: 400px;
       object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid #f0ebe6;
-      transition: border-color 0.2s;
-    }
-
-    .client-item:hover {
-      border-color: #c9a87c;
-      background: #fcf9f7;
-    }
-
-    .client-item:hover img {
-      border-color: #c9a87c;
-    }
-
-    .client-item i {
-      font-size: 28px;
-      color: #c9a87c;
       display: block;
-      margin-bottom: 4px;
     }
 
-    /* ----- testimonials ----- */
-    .testimonial-grid {
+    .skill-tags {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .skill-tags span {
+      background: #f0ebe6;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .skill-tags span:hover {
+      background: #e6ddd0;
+    }
+
+    /* team */
+    .team-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
       margin-top: 16px;
     }
 
-    .testimonial {
+    .team-member {
       background: #ffffff;
-      padding: 32px 28px;
-      border-radius: 20px;
-      border: 1px solid #f0ebe6;
-      transition: box-shadow 0.2s;
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
     }
 
-    .testimonial:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+    .team-member:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.07);
+      border-color: rgba(201, 168, 124, 0.2);
     }
 
-    .testimonial .stars {
-      color: #c9a87c;
-      letter-spacing: 4px;
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
-
-    .testimonial blockquote {
-      font-size: 17px;
-      line-height: 1.6;
-      color: #1e1e1e;
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
       margin-bottom: 16px;
-      font-style: italic;
+      border: 3px solid #f0ebe6;
+      transition: border-color 0.3s;
     }
 
-    .testimonial .author {
+    .team-member:hover img {
+      border-color: #c9a87c;
+    }
+
+    .team-member h4 {
+      font-size: 20px;
       font-weight: 600;
-      font-size: 15px;
       color: #111;
+      margin-bottom: 4px;
     }
 
-    .testimonial .role {
+    .team-member .role {
       font-size: 14px;
-      color: #777;
-    }
-
-    /* ----- contact / CTA ----- */
-    .contact-box {
-      background: #1e1e1e;
-      color: #fff;
-      padding: 56px 48px;
-      border-radius: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-    }
-
-    .contact-box h2 {
-      color: #fff;
+      color: #c9a87c;
+      font-weight: 500;
       margin-bottom: 8px;
     }
 
-    .contact-box p {
+    .team-member p {
+      font-size: 14px;
+      color: #666;
+      max-width: 100%;
+    }
+
+    /* values */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 16px;
+    }
+
+    .value-card {
+      background: #ffffff;
+      padding: 36px 28px;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+    }
+
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.06);
+    }
+
+    .value-card .icon {
+      font-size: 40px;
+      color: #c9a87c;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .value-card h4 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 8px;
+    }
+
+    .value-card p {
+      font-size: 15px;
+      color: #555;
+      max-width: 100%;
+    }
+
+    /* stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 16px;
+    }
+
+    .stat-item {
+      background: #ffffff;
+      padding: 32px 20px;
+      border-radius: 16px;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    .stat-item .number {
+      font-size: 44px;
+      font-weight: 700;
+      color: #c9a87c;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-item .label {
+      font-size: 16px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 70px 0;
+      border-radius: 24px;
+      margin: 0 24px;
+      box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.3);
+    }
+
+    .cta-section .container {
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
       color: rgba(255, 255, 255, 0.7);
       font-size: 18px;
-      max-width: 460px;
+      max-width: 560px;
+      margin: 0 auto 32px;
     }
 
     .btn {
@@ -402,14 +411,16 @@
       font-weight: 600;
       font-size: 16px;
       text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
       border: none;
       cursor: pointer;
+      box-shadow: 0 6px 16px rgba(201, 168, 124, 0.2);
     }
 
     .btn:hover {
       background: #dbbd96;
-      transform: scale(1.01);
+      transform: scale(1.02);
+      box-shadow: 0 10px 24px rgba(201, 168, 124, 0.3);
     }
 
     .btn-outline-light {
@@ -417,6 +428,8 @@
       border: 1px solid rgba(255, 255, 255, 0.25);
       color: #fff;
       padding: 12px 32px;
+      margin-left: 12px;
+      box-shadow: none;
     }
 
     .btn-outline-light:hover {
@@ -424,28 +437,7 @@
       border-color: rgba(255, 255, 255, 0.4);
     }
 
-    .contact-links {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-top: 8px;
-    }
-
-    .contact-links a {
-      color: rgba(255, 255, 255, 0.7);
-      text-decoration: none;
-      font-size: 15px;
-      transition: color 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .contact-links a:hover {
-      color: #fff;
-    }
-
-    /* ----- footer ----- */
+    /* footer */
     .site-footer {
       padding: 40px 0 32px;
       border-top: 1px solid rgba(0, 0, 0, 0.04);
@@ -459,7 +451,7 @@
       color: #c9a87c;
     }
 
-    /* ----- WhatsApp floating button ----- */
+    /* WhatsApp float */
     .whatsapp-float {
       position: fixed;
       bottom: 28px;
@@ -474,7 +466,7 @@
       width: 64px;
       height: 64px;
       box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s, box-shadow 0.2s;
       text-decoration: none;
       font-size: 36px;
     }
@@ -485,11 +477,6 @@
       color: #fff;
     }
 
-    .whatsapp-float i {
-      line-height: 1;
-    }
-
-    /* small label (optional) */
     .whatsapp-float .tooltip {
       display: none;
       position: absolute;
@@ -502,35 +489,36 @@
       font-weight: 500;
       white-space: nowrap;
       letter-spacing: 0.02em;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
     .whatsapp-float:hover .tooltip {
       display: block;
     }
 
-    /* ----- responsive ----- */
+    /* responsive */
     @media (max-width: 992px) {
       .about-grid {
         grid-template-columns: 1fr;
-        gap: 32px;
+        gap: 40px;
       }
 
-      .grid-2col {
-        grid-template-columns: 1fr;
-        gap: 32px;
+      .about-image img {
+        height: 300px;
       }
 
-      .grid-3col {
+      .team-grid,
+      .values-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      .testimonial-grid {
-        grid-template-columns: 1fr;
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .client-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .cta-section {
+        margin: 0 16px;
+        padding: 60px 24px;
       }
     }
 
@@ -546,35 +534,36 @@
         gap: 16px 24px;
       }
 
-      .hero-quote blockquote {
-        font-size: 22px;
+      .page-hero h1 {
+        font-size: 32px;
       }
 
       h2 {
         font-size: 28px;
       }
 
-      .grid-3col {
+      .team-grid,
+      .values-grid {
         grid-template-columns: 1fr;
       }
 
-      .client-grid {
+      .stats-grid {
         grid-template-columns: 1fr 1fr;
         gap: 16px;
       }
 
-      .contact-box {
-        padding: 36px 24px;
-        flex-direction: column;
-        text-align: center;
+      .about-image img {
+        height: 220px;
       }
 
-      .contact-box p {
-        max-width: 100%;
+      .cta-section {
+        padding: 40px 16px;
+        margin: 0 8px;
       }
 
-      .contact-links {
-        justify-content: center;
+      .cta-section .btn-outline-light {
+        margin-left: 0;
+        margin-top: 12px;
       }
 
       .whatsapp-float {
@@ -589,15 +578,15 @@
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
+  <!-- ===== PREMIUM STICKY HEADER ===== -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <i class="fas fa-pen-fancy"></i> SSDesigns
       </a>
       <nav class="nav">
-        <a href="#">Home</a>
-        <a href="About Us_2.html" class="active">About us</a>
+        <a href="index.html">Home</a>
+        <a href="#" class="active">About us</a>
         <a href="Our Services.html">Services</a>
         <a href="Projects.html">Projects</a>
         <a href="Contact.html">Contact</a>
@@ -605,209 +594,189 @@
     </div>
   </header>
 
-  <!-- ===== HERO / QUOTE ===== -->
-  <section class="hero-quote">
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
     <div class="container">
-      <blockquote>
-        Design is in everything we do, but it is also something between these things.
-        It is a mixture of craft, science, storytelling, propaganda, and philosophy.
-      </blockquote>
-      <div class="attribution">— Erik Adigard</div>
+      <h1>About <span>Us</span></h1>
+      <p>
+        We're a creative studio dedicated to building authentic brands through
+        strategic design and meaningful storytelling.
+      </p>
     </div>
   </section>
 
-  <!-- ===== ABOUT / WHO WE ARE ===== -->
+  <!-- ===== ABOUT SECTION ===== -->
   <section>
     <div class="container">
       <div class="about-grid">
         <div class="about-text">
-          <span class="section-label">About Us</span>
-          <h2>Who we are?</h2>
+          <span class="section-label">Who we are</span>
+          <h2>We design brands that matter</h2>
           <p>
-            We develop creative solutions for small and large brands alike,
-            building authentic product identities and more.
+            SSDesigns is a creative studio founded by two experienced professionals
+            with a shared passion for brand design. We believe that great design
+            has the power to transform businesses and connect with people on a
+            deeper level.
           </p>
           <p>
-            We love growing brands and welcoming those who like to challenge
-            solid markets through innovation, who aren't always satisfied with
-            the status quo, and who push us to achieve ever better results.
+            We develop creative solutions for small and large brands alike,
+            building authentic product identities that perform in the marketplace.
+            We love growing brands and welcoming those who challenge solid markets
+            through innovation.
           </p>
           <p>
             Putting the consumer first, we strive to develop creative solutions
-            that perform in the marketplace.
+            that deliver real value and measurable impact.
           </p>
+          <div class="skill-tags">
+            <span>Strategy</span>
+            <span>Branding</span>
+            <span>Design</span>
+            <span>Innovation</span>
+          </div>
         </div>
-        <div class="studio-badge">
-          <div class="highlight">
-            <i class="fas fa-users"></i> A creative studio
-          </div>
-          <p>
-            Founded by two experienced professionals in marketing and graphic arts,
-            brought together by a shared passion for brand design.
-          </p>
-          <div style="margin-top: 20px; display: flex; gap: 16px; flex-wrap: wrap;">
-            <span style="background: #e6dfd8; padding: 6px 16px; border-radius: 40px; font-size: 14px; font-weight: 500;">strategy</span>
-            <span style="background: #e6dfd8; padding: 6px 16px; border-radius: 40px; font-size: 14px; font-weight: 500;">branding</span>
-            <span style="background: #e6dfd8; padding: 6px 16px; border-radius: 40px; font-size: 14px; font-weight: 500;">design</span>
-          </div>
+        <div class="about-image">
+          <img src="Brand.avif" alt="SSDesigns Studio" />
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== OBJECTIVES & VALUES ===== -->
+  <!-- ===== TEAM SECTION ===== -->
   <section>
     <div class="container">
-      <span class="section-label">What we aim for</span>
-      <h2>Our objectives</h2>
-      <div class="grid-2col">
-        <div class="objective-card">
-          <div class="icon"><i class="fas fa-bullseye"></i></div>
-          <h4>Strategy &amp; creativity</h4>
-          <p>
-            To use our knowledge and experience to help brand owners achieve
-            their goals through strategic thinking and creative design.
-          </p>
+      <span class="section-label">Meet the team</span>
+      <h2>Our creative crew</h2>
+      <p class="section-subtitle">
+        A diverse team of designers, strategists, and creative thinkers
+        brought together by a shared passion for great design.
+      </p>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="Sarah Mokoena.jpg" alt="Team member" />
+          <h4>Sarah Mokoena</h4>
+          <div class="role">Creative Director</div>
+          <p>10+ years in brand strategy and design leadership.</p>
         </div>
-        <div class="objective-card">
-          <div class="icon"><i class="fas fa-handshake"></i></div>
-          <h4>Real partnerships</h4>
-          <p>
-            We build genuine relationships with our clients, placing transparency
-            and trust at the heart of every collaboration.
-          </p>
+        <div class="team-member">
+          <img src="Head of Design.avif" alt="Team member" />
+          <h4>Thabo Nkosi</h4>
+          <div class="role">Head of Design</div>
+          <p>Expert in visual identity and packaging design.</p>
+        </div>
+        <div class="team-member">
+          <img src="Lerato Dlamini.jpg" alt="Team member" />
+          <h4>Lerato Dlamini</h4>
+          <div class="role">Digital Designer</div>
+          <p>Specialist in UI/UX and interactive experiences.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <span class="section-label" style="margin-top: 48px; display: inline-block;">Our guide</span>
-      <h2>Our values</h2>
-      <div class="grid-3col">
+  <!-- ===== VALUES SECTION ===== -->
+  <section>
+    <div class="container">
+      <span class="section-label">Our guide</span>
+      <h2>What we stand for</h2>
+      <p class="section-subtitle">
+        These values shape everything we do and guide our decisions
+        every day.
+      </p>
+      <div class="values-grid">
         <div class="value-card">
           <div class="icon"><i class="fas fa-gem"></i></div>
-          <h4>Real value</h4>
+          <h4>Real Value</h4>
           <p>
-            To deliver real value to our clients' brands in everything we provide.
+            We deliver real value to our clients' brands in everything we
+            provide, focusing on tangible results and meaningful impact.
           </p>
         </div>
         <div class="value-card">
           <div class="icon"><i class="fas fa-heart"></i></div>
           <h4>Sincerity</h4>
           <p>
-            To be honest with our clients for the benefit of their brands and consumers.
+            We're honest with our clients for the benefit of their brands
+            and consumers, building trust through transparency.
           </p>
         </div>
         <div class="value-card">
           <div class="icon"><i class="fas fa-rocket"></i></div>
           <h4>Impact</h4>
           <p>
-            Every creative solution must have a measurable impact in the market
-            and in consumers' lives.
+            Every creative solution must have a measurable impact in the
+            market and in consumers' lives.
           </p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CLIENTS with images from savee ===== -->
-  <section>
-    <div class="container">
-      <span class="section-label">Collaborations</span>
-      <h2>Our clients</h2>
-      <p class="text-muted" style="margin-bottom: 8px;">
-        Some of the friends we've made while working together.
-      </p>
-      <div class="client-grid">
-        <!-- using savee.it placeholder images (brand/creative style) -->
-        <div class="client-item">
-          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-1.jpg" alt="Alpha Brand" />
-          <span>Alpha Brand</span>
-        </div>
-        <div class="client-item">
-          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-2.jpg" alt="Green & Nature" />
-          <span>Green &amp; Nature</span>
-        </div>
-        <div class="client-item">
-          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-3.jpg" alt="InnoLab" />
-          <span>InnoLab</span>
-        </div>
-        <div class="client-item">
-          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-4.jpg" alt="Café Origin" />
-          <span>Café Origin</span>
-        </div>
-        <div class="client-item">
-          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-5.jpg" alt="Vintage Wine" />
-          <span>Vintage Wine</span>
-        </div>
-        <div class="client-item">
-          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-6.jpg" alt="PharmaTech" />
-          <span>PharmaTech</span>
-        </div>
-        <div class="client-item">
-          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-7.jpg" alt="Design & Co" />
-          <span>Design &amp; Co</span>
-        </div>
-        <div class="client-item">
-          <img src="https://savee.it/wp-content/uploads/2021/03/placeholder-8.jpg" alt="Market Fresh" />
-          <span>Market Fresh</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TESTIMONIALS ===== -->
-  <section>
-    <div class="container">
-      <span class="section-label">Success stories</span>
-      <h2>Testimonials</h2>
-      <div class="testimonial-grid">
-
-        <div class="testimonial">
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <blockquote>
-            “Our experience with SSDesigns was a great success. We needed a total
-            packaging redesign and asked for a proposal. We were delighted with
-            the new look for our various ranges and implemented everything within
-            3 months. Our products are now on pharmacy shelves, and the positive
-            sales evolution says it all.”
-          </blockquote>
-          <div class="author">– Brand Manager PharmaTech</div>
-        </div>
-
-        <div class="testimonial">
-          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-          <blockquote>
-            “They developed a revolutionary structural design, a new shape for
-            Vintage Wine, which led to increased shelf visibility and a modernised
-            image, while staying true to the brand's essence. The bold way they
-            approached a traditional brand impressed us.”
-          </blockquote>
-          <div class="author">– Brand Director Vintage Wine</div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CONTACT / CTA ===== -->
-  <section style="border-bottom: none; padding-bottom: 32px;">
-    <div class="container">
-      <div class="contact-box">
-        <div>
-          <span class="section-label" style="color: rgba(255,255,255,0.5);">Let's talk?</span>
-          <h2>Contact us</h2>
+        <div class="value-card">
+          <div class="icon"><i class="fas fa-lightbulb"></i></div>
+          <h4>Innovation</h4>
           <p>
-            Want to build an authentic brand together? We're here to turn
-            ideas into reality.
+            We challenge the status quo and push creative boundaries to
+            deliver fresh, forward-thinking solutions.
           </p>
-          <div class="contact-links">
-            <a href="#"><i class="fas fa-envelope"></i> sekang.segotso@moov.life</a>
-            <a href="#"><i class="fas fa-phone"></i> +27 61 454 8884</a>
-            <a href="#"><i class="fas fa-map-pin"></i> 25060 Diepkloof Z4 Bopang street</a>
-          </div>
         </div>
+        <div class="value-card">
+          <div class="icon"><i class="fas fa-handshake"></i></div>
+          <h4>Partnership</h4>
+          <p>
+            We build genuine relationships with our clients, placing
+            collaboration and trust at the heart of every project.
+          </p>
+        </div>
+        <div class="value-card">
+          <div class="icon"><i class="fas fa-star"></i></div>
+          <h4>Excellence</h4>
+          <p>
+            We strive for excellence in everything we do, from the smallest
+            detail to the big picture.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS SECTION ===== -->
+  <section>
+    <div class="container">
+      <span class="section-label">Our impact</span>
+      <h2>By the numbers</h2>
+      <p class="section-subtitle">
+        A snapshot of what we've achieved with our clients over the years.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="number">120+</div>
+          <div class="label">Projects delivered</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">95%</div>
+          <div class="label">Client satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">8</div>
+          <div class="label">Industry awards</div>
+        </div>
+        <div class="stat-item">
+          <div class="number">50+</div>
+          <div class="label">Happy clients</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section style="border-bottom: none; padding: 40px 0 80px;">
+    <div class="cta-section">
+      <div class="container">
+        <h2>Ready to work together?</h2>
+        <p>
+          Let's create something amazing. We'd love to hear about your
+          brand and how we can help bring your vision to life.
+        </p>
         <div>
-          <a href="#" class="btn">Send a message</a>
-          <a href="#" class="btn btn-outline-light" style="margin-left: 12px;">See projects</a>
+          <a href="Contact.html" class="btn">Get in touch</a>
+          <a href="Projects.html" class="btn btn-outline-light">See our work</a>
         </div>
       </div>
     </div>
@@ -827,7 +796,7 @@
   </footer>
 
   <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
-  <a href="https://wa.me/27614548884?text=Hi%20SSDesigns%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services." 
+  <a href="https://wa.me/27614548884?text=Hi%20SSDesigns%2C%20I'd%20like%20to%20know%20more%20about%20your%20studio." 
      class="whatsapp-float" 
      target="_blank" 
      rel="noopener noreferrer"
